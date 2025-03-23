@@ -7,7 +7,9 @@ import TabScreen from './src/screen/tab';
 import SignUpScreen from './src/screen/signUp';
 import FormScreen from './src/screen/form';
 import Toast from 'react-native-toast-message';
+// import { enableScreens } from 'react-native-screens';
 
+// enableScreens();
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {

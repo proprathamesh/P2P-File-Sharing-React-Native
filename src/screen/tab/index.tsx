@@ -61,10 +61,10 @@ export default function TabScreen() {
         </Text>
       )}
       renderIcon={({ route, focused, color }: RenderIconProps) =>
-        route.title === 'First' ? (
-          <AntDesign name={'home'} color={color} size={20} />
+        route.key === 'first' ? (
+          <AntDesign name="home" color={color} size={20} />
         ) : (
-          <AntDesign name={'user'} color={color} size={20} />
+          <AntDesign name="user" color={color} size={20} />
         )
       }
     />
