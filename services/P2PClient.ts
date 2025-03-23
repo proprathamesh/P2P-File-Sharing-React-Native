@@ -1,4 +1,3 @@
-// src/services/P2PClient.ts
 import TcpSocket from 'react-native-tcp-socket';
 import RNFS from 'react-native-fs';
 
@@ -10,15 +9,17 @@ type SendFileOptions = {
   onError?: (error: string) => void;
 };
 
-export const sendFileToPeer = async (options: SendFileOptions) => {
+export const sendFileToPeer = async (options: SendFileOptions): Promise<void> => {
   const { filePath, peerIp, peerPort, onSuccess, onError } = options;
 
   try {
-    const fileData = await RNFS.readFile(filePath, 'utf8');
+    // Read the file content
+    const fileContent = await RNFS.readFile(filePath, 'utf8');
 
+    // Create a TCP connection to the peer
     const client = TcpSocket.createConnection({ port: peerPort, host: peerIp }, () => {
       console.log('Connected to peer');
-      client.write(fileData);
+      client.write(fileContent); // Send the file content
       if (onSuccess) onSuccess();
     });
 
